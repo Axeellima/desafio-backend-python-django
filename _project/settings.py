@@ -175,7 +175,7 @@ SPECTACULAR_SETTINGS = {
 
         commom-server-link = "http://localhost:8000/"
 
-        Register CNAB: To upload and register your CNAB file, add the suffix "api/home/" to the server link to access the submission form. After submission you will get a success response from the server if everything goes well!
+        Register CNAB: To upload and register your CNAB file, add the suffix "api/" to the server link to access the submission form. After submission you will get a success response from the server if everything goes well!
 
         List of stores and transactions: To list all stores and your transactions add the suffix "api/list/" to the server link.
 

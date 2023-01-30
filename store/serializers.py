@@ -17,11 +17,11 @@ class StoreSerializer(serializers.ModelSerializer):
         for newobj in obj.doc.all():
             value = int(newobj.value) / 100
             
-            if(newobj.type.name == "Boleto"):
+            if(newobj.type.name == "Bank slip"):
                 value = value * - 1
-            elif(newobj.type.name == "Financiamento"):
+            elif(newobj.type.name == "Financing"):
                 value = value * - 1
-            elif(newobj.type.name == "Aluguel"):
+            elif(newobj.type.name == "Rent"):
                 value = value * - 1
             
             array_value.append(value)

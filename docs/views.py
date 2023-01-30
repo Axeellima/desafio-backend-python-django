@@ -48,23 +48,23 @@ class DocView(CreateAPIView):
 
             if(type):
                 if(type == 1):
-                    type = Type.objects.get_or_create(name="Débito", nature="Entrada")
+                    type = Type.objects.get_or_create(name="Debit", nature="Entry")
                 elif(type == 2):
-                    type = Type.objects.get_or_create(name="Boleto", nature="Saída")
+                    type = Type.objects.get_or_create(name="Bank slip", nature="Exit")
                 elif(type == 3):
-                    type = Type.objects.get_or_create(name="Financiamento", nature="Saída")
+                    type = Type.objects.get_or_create(name="Financing", nature="Exit")
                 elif(type == 4):
-                    type = Type.objects.get_or_create(name="Crédito", nature="Entrada")
+                    type = Type.objects.get_or_create(name="Credit", nature="Entry")
                 elif(type == 5):
-                    type = Type.objects.get_or_create(name="Recebimento Empréstimo", nature="Entrada")
+                    type = Type.objects.get_or_create(name="Loan Receipt", nature="Entry")
                 elif(type == 6):
-                    type = Type.objects.get_or_create(name="Vendas", nature="Entrada")
+                    type = Type.objects.get_or_create(name="Sales", nature="Entry")
                 elif(type == 7):
-                    type = Type.objects.get_or_create(name="Recebimento TED", nature="Entrada")
+                    type = Type.objects.get_or_create(name="TED Recip", nature="Entry")
                 elif(type == 8):
-                    type = Type.objects.get_or_create(name="Recebimento DOC", nature="Entrada")
+                    type = Type.objects.get_or_create(name="DOC Recip", nature="Entry")
                 elif(type == 9):
-                    type = Type.objects.get_or_create(name="Aluguel", nature="Saída")
+                    type = Type.objects.get_or_create(name="Rent", nature="Exit")
 
                 new_line = {}
                 new_line["type"] = type[0]

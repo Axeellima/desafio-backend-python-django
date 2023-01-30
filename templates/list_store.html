@@ -13,7 +13,8 @@
 <body>
     <main class="container">
         <div class="title">
-            <h1>Lista de Transações por Loja:</h1>
+            <h1>
+                List of transactions by store:</h1>
         </div>
         <ul class="div-list">
             {% for dbs in db %}
@@ -21,13 +22,13 @@
                 <h3 class="store-name">{{dbs.name}}</h3>
                 {% for list in dbs.list_order %}
                 <div class="div-transaction">
-                    <h2>Transação:</h2>
-                    <h3 class="transaction">Tipo: {{list.type}}</h3>
-                    <h3 class="transaction-nature">Natureza: {{list.nature}}</h3>
-                    <h3 class="value-transaction">Valor: R$ {{list.value}}</h3>
+                    <h2>Transaction:</h2>
+                    <h3 class="transaction">Type: {{list.type}}</h3>
+                    <h3 class="transaction-nature">Nature: {{list.nature}}</h3>
+                    <h3 class="value-transaction">Value: R$ {{list.value}}</h3>
                 </div>
                 {% endfor %}
-                <h3>Balanço: R$ {{dbs.balance}}</h3>
+                <h3 class="store-balance">Balance: R$ {{dbs.balance}}</h3>
             </li>
             {% endfor %}
         </ul>
