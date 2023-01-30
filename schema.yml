@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: CNAB Database
+  version: 1.0.0
+  description: "\n    CNAB Database aims to facilitate the registration, reading and\
+    \ location of data from CNAB files.\n\n    Functionalities: CNAB file record per\
+    \ customer/store, customer/store listing with transaction history\n\n    Technologies:\
+    \ Python, Django restframework, SQlite, drf spectacular\n\n    Instalation:\n\
+    \        1° Step create your virtual environment in your terminal in the root\
+    \ folder of the project \n        using \"python -m venv venv\" for more information\
+    \ access \"https://docs.python.org/3/library/venv.html\"\n\n        2° Step install\
+    \ project dependencies using \"pip install requirements.txt\" in your terminal\n\
+    \n        3° The application is ready to use, but attention is needed if you start\
+    \ the server on a port other than \":8000\" make sure to change the request link\
+    \ in \"_project.views\"\n    "
+paths:
+  /api/docs/:
+    post:
+      operationId: api_docs_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocList'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocList'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocList'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocList'
+          description: ''
+  /api/docs/list/:
+    get:
+      operationId: api_docs_list_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Doc'
+          description: ''
+  /api/store/:
+    get:
+      operationId: api_store_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Store'
+          description: ''
+components:
+  schemas:
+    Doc:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        type:
+          type: integer
+          readOnly: true
+          nullable: true
+        event_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+        cpf:
+          type: string
+          readOnly: true
+        card:
+          type: string
+          readOnly: true
+        hour:
+          type: string
+          format: time
+          readOnly: true
+          nullable: true
+        owner:
+          type: string
+          readOnly: true
+        store:
+          type: integer
+          readOnly: true
+          nullable: true
+        value:
+          type: string
+          readOnly: true
+      required:
+      - card
+      - cpf
+      - event_date
+      - hour
+      - id
+      - owner
+      - store
+      - type
+      - value
+    DocList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Doc'
+          readOnly: true
+      required:
+      - data
+    Store:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 19
+        balance:
+          type: string
+          readOnly: true
+        list_order:
+          type: string
+          readOnly: true
+      required:
+      - balance
+      - list_order
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

@@ -82,7 +82,3 @@ class DocView(CreateAPIView):
         serializer.save(data=save_serializers)
 
         return serializer.data
-
-class DocListView(ListAPIView):
-    queryset = Doc.objects.all()
-    serializer_class = DocSerializer

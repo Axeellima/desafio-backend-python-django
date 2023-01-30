@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
+from django.core.management.utils import get_random_secret_key
+
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-z8k9lh-#6gsg1xng$iky$ua8d4=*(7_xf9f6v1^$bvq05$=)bz"
+SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +44,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "drf_spectacular",
 ]
 
 MY_APPS = [
@@ -129,9 +134,53 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
 AUTH_USER_MODEL = "users.User"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'CNAB Database',
+    'DESCRIPTION': """
+    CNAB Database aims to facilitate the registration, reading and location of data from CNAB files for local server.
+
+    Functionalities: CNAB file record per customer/store, customer/store listing with transaction history
+
+    Technologies: Python, Django restframework, SQlite, drf spectacular
+
+       Instalation:
+    
+        1° Step create your virtual environment in your terminal in the root folder of the project
+        using "python -m venv venv" for more information about venv module access "https://docs.python.org/3/library/venv.html"
+
+        2° Step install project dependencies using "pip install requirements.txt" in your terminal
+
+        3° Step run "python manage.py makemigrations" and "python manage.py migrate" in your terminal for create a new database and crete the tables
+
+        4° The application is ready to use, but attention is needed if you start the server on a port other than ":8000" make sure to change the request link in "_project.views"
+
+        5° In terminal "python manage.py runserver"
+
+    Application:
+
+        commom-server-link = "http://localhost:8000/"
+
+        Register CNAB: To upload and register your CNAB file, add the suffix "api/home/" to the server link to access the submission form. After submission you will get a success response from the server if everything goes well!
+
+        List of stores and transactions: To list all stores and your transactions add the suffix "api/list/" to the server link.
+
+    """,
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}

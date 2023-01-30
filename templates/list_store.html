@@ -5,19 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>List stores and transactions</title>
 </head>
+{% load static %}
+<link rel="stylesheet" defer href={% static 'style_list.css' %}>
 
 <body>
-    {% for dbs in db %}
-    <h3>Nome da loja: {{dbs.name}}</h3>
-    {% for list in dbs.list_order %}
-    <h3>Tipo transação: {{list.type}}</h3>
-    <h3>Natureza transação:{{list.nature}}</h3>
-    <h3>Valor transação:{{list.value}}</h3>
-    {% endfor %}
-    <h3>Balanço: {{dbs.balance}}</h3>
-    {% endfor %}
+    <main class="container">
+        <div class="title">
+            <h1>Lista de Transações por Loja:</h1>
+        </div>
+        <ul class="div-list">
+            {% for dbs in db %}
+            <li class="list">
+                <h3 class="store-name">{{dbs.name}}</h3>
+                {% for list in dbs.list_order %}
+                <div class="div-transaction">
+                    <h2>Transação:</h2>
+                    <h3 class="transaction">Tipo: {{list.type}}</h3>
+                    <h3 class="transaction-nature">Natureza: {{list.nature}}</h3>
+                    <h3 class="value-transaction">Valor: R$ {{list.value}}</h3>
+                </div>
+                {% endfor %}
+                <h3>Balanço: R$ {{dbs.balance}}</h3>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 
 </html>

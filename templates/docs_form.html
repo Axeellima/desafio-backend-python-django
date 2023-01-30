@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save docs</title>
+    <title>Register CNAB</title>
 </head>
+{% load static %}
+<link rel="stylesheet" defer href={% static 'style_docs.css' %}>
 
 <body>
     <div class="container">
-        <form method="post" action="docs/" enctype="multipart/form-data">
-            <label for="doc">Documento:</label>
+        <div class="title">
+            <h1>Register your CNAB file:</h1>
+        </div>
+        <form method="post" action="register/" enctype="multipart/form-data">
+            <label for="doc">Document:</label>
             <input type="file" name="doc">
-            <button type="submit">Enviar documentação</button>
+            <button type="submit">Send</button>
         </form>
     </div>
 </body>
