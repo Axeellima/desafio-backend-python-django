@@ -11,7 +11,7 @@ CNAB Database
         1° Step create your virtual environment in your terminal in the root folder of the project
         using "python -m venv venv" for more information access "https://docs.python.org/3/library/venv.html"
 
-        2° Step install project dependencies using "pip install requirements.txt" in your terminal
+        2° Step install project dependencies using "pip install -r requirements.txt" in your terminal
 
         3° Step run "python manage.py makemigrations" and "python manage.py migrate" in your terminal for create a new database and crete the tables
 
