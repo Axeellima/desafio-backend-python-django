@@ -1,28 +1,56 @@
-CNAB Database
+# Desafio Back-End Django CNAB 🐍🚀
 
-    CNAB Database aims to facilitate the registration, reading and location of data from CNAB files.
+Bem-vindo ao repositório do meu desafio back-end com Django enquanto eu estava na Kenzie Academy Brasil! Este projeto, chamado Banco de Dados CNAB, tem como objetivo facilitar o cadastro, leitura e localização de dados de arquivos CNAB.
 
-    Functionalities: CNAB file record per customer/store, customer/store listing with transaction history
+## Funcionalidades ✨
 
-    Technologies: Python, Django restframework, SQlite, drf spectacular
+- Cadastro de arquivo CNAB por cliente/loja.
+- Listagem de cliente/loja com histórico de transações.
 
-    Instalation:
+## Tecnologias Utilizadas 🛠️
 
-        1° Step create your virtual environment in your terminal in the root folder of the project
-        using "python -m venv venv" for more information access "https://docs.python.org/3/library/venv.html"
+- Python
+- Django Rest Framework
+- SQLite
+- [DRF Espetacular](https://drf-espectacular.readthedocs.io/)
 
-        2° Step install project dependencies using "pip install -r requirements.txt" in your terminal
+## Instalação 🚀
 
-        3° Step run "python manage.py makemigrations" and "python manage.py migrate" in your terminal for create a new database and crete the tables
+**1° Passo:** Crie seu ambiente virtual:
 
-        4° The application is ready to use, but attention is needed if you start the server on a port other than ":8000" make sure to change the request link in "_project.views"
+```bash
+python -m venv venv
+```
 
-        5° In terminal "python manage.py runserver"
+[Mais informações sobre ambientes virtuais](https://docs.python.org/3/library/venv.html)
 
-    Application:
+**2° Etapa:** Instale as dependências do projeto:
 
-        commom-server-link = "http://localhost:8000/"
+```bash
+pip install -r requirements.txt
+```
 
-        Register CNAB: To upload and register your CNAB file, add the suffix "api/ to the server link to access the submission form. After submission you will get a success response from the server if everything goes well!
+**3° Passo:** Execute as migrações:
 
-        List of stores and transactions: To list all stores and your transactions add the suffix "api/list/" to the server link.
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**4° Passo:** Inicie o servidor:
+
+```bash
+python manage.py runserver
+```
+
+**5° Passo:** Acesse a aplicação em [http://localhost:8000/](http://localhost:8000/)
+
+## Uso do Aplicativo 🚀
+
+**Link do Servidor Comum:** [http://localhost:8000/](http://localhost:8000/)
+
+**Cadastro CNAB:** Para fazer upload e registrar seu arquivo CNAB, adicione o sufixo `api/` ao link do servidor para acessar o formulário de envio. Após o envio, você receberá uma resposta de sucesso do servidor se tudo correr bem!
+
+**Lista de Lojas e Transações:** Para listar todas as lojas e suas transações, adicione o sufixo `api/list/` ao link do servidor.
+
+Divirta-se explorando o projeto! Contribuições e feedbacks são sempre bem-vindos. Vamos construir algo incrível juntos! 🚀😊
